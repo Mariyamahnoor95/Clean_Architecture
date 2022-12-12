@@ -10,9 +10,9 @@ class MockNumberTriviaRepository extends Mock
 
 void main() {
   MockNumberTriviaRepository mockNumberTriviaRepository =
-      MockNumberTriviaRepository();
+  MockNumberTriviaRepository();
   GetConcreteNumberTrivia usecase =
-      GetConcreteNumberTrivia(mockNumberTriviaRepository);
+  GetConcreteNumberTrivia(mockNumberTriviaRepository);
   setUp(() {
     mockNumberTriviaRepository = MockNumberTriviaRepository();
     usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
@@ -21,15 +21,15 @@ void main() {
   const tNumberTrivia = NumberTrivia(text: 'Test ', number: 1);
 
   test('should get concrete trivia for the number from the repository ',
-      () async {
-    //arrange
-    when(mockNumberTriviaRepository.getConcreteNumberTrivia(1))
-        .thenAnswer((_) async => const Right(tNumberTrivia));
-    // act
-    final result = await usecase.execute(number: tNumber);
-    //assert
-    expect(result, const Right(tNumberTrivia));
-    verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
-    verifyNoMoreInteractions(mockNumberTriviaRepository);
-  });
+          () async {
+        //arrange
+        when(mockNumberTriviaRepository.getConcreteNumberTrivia(1))
+            .thenAnswer((_) async => const Right(tNumberTrivia));
+        // act
+        final result = await usecase.execute(number: tNumber);
+        //assert
+        expect(result, const Right(tNumberTrivia));
+        verify(mockNumberTriviaRepository.getConcreteNumberTrivia(tNumber));
+        verifyNoMoreInteractions(mockNumberTriviaRepository);
+      });
 }
