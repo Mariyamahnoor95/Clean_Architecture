@@ -47,4 +47,29 @@ void main(){
       expect(result, equals(tWeatherModel));
     });
   });
+
+  group('to json', () {
+    test('should return a json map containing proper data', () async {
+
+      // act
+      final result = tWeatherModel.toJson();
+      // assert
+      final expectedJsonMap = {
+        'weather':[
+          {
+        'main':'Clouds',
+        'description':'few clouds',
+        'icon':'02d'
+      }
+      ],
+        'main':{
+          'temp':302.28,
+          'pressure':1009,
+          'humidity':70,
+        },
+        'name': 'Jakarta',
+      };
+      expect(result, equals(expectedJsonMap));
+    },);
+  });
 }
